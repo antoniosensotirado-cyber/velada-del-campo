@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Velada del Campo 2</title>
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#020617;color:white}
+header{background:linear-gradient(90deg,#111827,#1f2937);padding:40px;text-align:center}
+h1{font-size:48px;margin:0}
+.subtitle{font-size:20px;margin-top:10px}
+.container{max-width:1100px;margin:auto;padding:20px}
+.section{background:#0f172a;padding:25px;margin-top:30px;border-radius:14px}
+button{background:#22c55e;border:none;padding:12px 18px;color:white;border-radius:8px;font-size:16px;cursor:pointer}
+button:hover{opacity:0.9}
+.fighters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#1e293b;padding:20px;border-radius:12px;text-align:center}
+.card img{width:100%;border-radius:10px}
+.vote{margin-top:10px}
+input{width:100%;padding:10px;margin-top:8px;margin-bottom:12px;border:none;border-radius:6px}
+#contract{display:none;margin-top:15px}
+.success{display:none;background:#065f46;padding:12px;border-radius:8px;margin-top:10px}
+.counter{font-size:22px;margin-top:10px}
+.voteCount{font-size:18px;margin-top:6px}
+</style>
+</head>
+<body><header>
+<h1>🥊 La Velada del Campo 2</h1>
+<div class="subtitle">⏰ Hora: <strong>AÚN POR DECIDIR</strong></div>
+<p>Combates, fiesta y espectáculo.</p>
+</header><div class="container"><div class="section">
+<h2>🥊 Perfil de luchadores</h2>
+<div class="fighters"><div class="card">
+<img src="https://i.imgur.com/7yUvePI.png">
+<h3>Luchador 1</h3>
+<p>Altura: 180 cm</p>
+<p>Peso: 80 kg</p>
+<button onclick="vote(1)">Votar</button>
+<div class="voteCount">Votos: <span id="v1">0</span></div>
+</div><div class="card">
+<img src="https://i.imgur.com/7yUvePI.png">
+<h3>Luchador 2</h3>
+<p>Altura: 175 cm</p>
+<p>Peso: 78 kg</p>
+<button onclick="vote(2)">Votar</button>
+<div class="voteCount">Votos: <span id="v2">0</span></div>
+</div><div class="card">
+<img src="https://i.imgur.com/7yUvePI.png">
+<h3>Luchador 3</h3>
+<p>Altura: 182 cm</p>
+<p>Peso: 85 kg</p>
+<button onclick="vote(3)">Votar</button>
+<div class="voteCount">Votos: <span id="v3">0</span></div>
+</div></div>
+</div><div class="section">
+<h2>📋 Inscripción Combates</h2>
+<p>Si quieres pelear en La Velada del Campo 2 puedes inscribirte aquí.</p>
+<button onclick="showForm()">Inscribirte</button><div id="contract">
+<p>Al firmar este contrato aceptas que si sufres cualquier lesión durante el evento la organización no se hace responsable.</p><form onsubmit="submitForm(event)">
+<label>Nombre</label>
+<input required><label>Altura (cm)</label> <input required type="number">
+
+<label>Peso (kg)</label> <input required type="number">
+
+<label>Firma (nombre completo)</label> <input required>
+
+<button type="submit">Firmar contrato</button>
+
+</form><div id="successMessage" class="success">Leeremos tu solicitud, gracias por querer participar en este evento!</div>
+</div>
+</div><div class="section">
+<h2>🎉 ¿Te interesa venir?</h2>
+<button onclick="interest()">Me interesa la fiesta</button>
+<div class="counter">Personas interesadas: <span id="count">0</span></div>
+</div></div><script>
+let count=0
+let v1=0
+let v2=0
+let v3=0
+
+function showForm(){
+ document.getElementById('contract').style.display='block'
+}
+
+function submitForm(e){
+ e.preventDefault()
+ document.getElementById('successMessage').style.display='block'
+}
+
+function interest(){
+ count++
+ document.getElementById('count').innerText=count
+}
+
+function vote(num){
+ if(num===1){v1++;document.getElementById('v1').innerText=v1}
+ if(num===2){v2++;document.getElementById('v2').innerText=v2}
+ if(num===3){v3++;document.getElementById('v3').innerText=v3}
+}
+</script></body>
+</html>
